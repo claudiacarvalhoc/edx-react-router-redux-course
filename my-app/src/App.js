@@ -1,31 +1,24 @@
 import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+// import { render } from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
-const Home = () => <div>Home</div>;
-const About = () => <div>About</div>;
-const Users = ({ match }) => <div>{match.url}</div>;
+import { About } from "./About";
+import { Info } from "./Info";
+import { Home } from "./Home";
+import { Users } from "./Users";
 
 const App = () => (
-  <BrowserRouter>
+  <div>
+    <BrowserRouter>
     <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/users">Users</Link>{" "}
-        </li>
-      </ul>
-      <hr />
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
-      <Route path="/users" component={Users} />
+      <Route path="/users/:id" component={Users} />
+      <Route path="/info" component={Info} />
     </div>
   </BrowserRouter>
+  </div>
 );
+
 
 export default App;
